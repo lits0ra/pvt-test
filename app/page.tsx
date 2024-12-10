@@ -9,7 +9,6 @@ export default function Home() {
   const router = useRouter();
   const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setInputValue(e.target.value);
-    // エラーチェックを削除
   };
 
   const handleSubmit = () => {
