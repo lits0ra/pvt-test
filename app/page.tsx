@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [inputValue, setInputValue] = useState("22DC102029K");
+  const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
   const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => {
