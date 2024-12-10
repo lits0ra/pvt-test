@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from "react";
+import { SetStateAction, useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 
@@ -7,7 +7,7 @@ export default function Home() {
   const [inputValue, setInputValue] = useState("22DC102029K");
   const [error, setError] = useState("");
   const router = useRouter();
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setInputValue(e.target.value);
     // エラーチェックを削除
   };
