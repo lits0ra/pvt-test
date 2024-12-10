@@ -28,7 +28,7 @@ export default function Home() {
   setTimeout(() => {
     setIsCircle(false);
     setShowResults(true);
-  }, 20000)
+  }, 30000)
 
   useEffect(() => {
     if (!isCircle) {
@@ -109,7 +109,6 @@ export default function Home() {
         <button onClick={downloadExcel} style={{ marginTop: "10px" }}>Download Excel</button>
         </>
       )}
-
     </div>
   )
 }
