@@ -1,11 +1,12 @@
 'use client';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("22DC102029K");
   const [error, setError] = useState("");
-
+  const router = useRouter();
   const handleInputChange = (e: any) => {
     setInputValue(e.target.value);
     // エラーチェックを削除
@@ -16,7 +17,7 @@ export default function Home() {
       setError("学籍番号は11文字である必要があります");
     } else {
       setError("");
-      console.log("画面遷移");
+      router.push(`/start_test`);
     }
   };
 
