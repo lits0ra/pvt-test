@@ -48,14 +48,21 @@ export default function Home() {
     }
   }, [reactionTime]);
 
-  const handleClick = () => {
-    if (startTime !== null) {
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if (event.key === 'n' && startTime !== null && !showResults) {
       const endTime = Date.now();
       setReactionTime(endTime - startTime);
+      setIsCircle(false);
+      setStartTime(null);
     }
-    setIsCircle(false);
-    setStartTime(null);
   };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [startTime]);
 
   const downloadExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(results);
@@ -67,7 +74,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {isCircle && !showResults && (
-        <div className={styles.circle} onClick={handleClick}>
+        <div className={styles.circle}>
         </div>
       )}
       {reactionTime !== null && !showResults && (
