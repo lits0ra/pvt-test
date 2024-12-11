@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        PVT TEST
+        PVT
       </div>
       <input
         className={styles.input}
