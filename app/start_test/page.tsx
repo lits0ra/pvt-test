@@ -68,47 +68,45 @@ export default function Home() {
     const worksheet = XLSX.utils.json_to_sheet(results);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Results");
-    XLSX.writeFile(workbook, "results.xlsx");
+    const studentId = 'results';
+    XLSX.writeFile(workbook, `${studentId}.xlsx`);
   };
 
   return (
     <div className={styles.container}>
-      {isCircle && !showResults && (
-        <div className={styles.circle}>
-        </div>
-      )}
-      {reactionTime !== null && !showResults && (
-        <div style={{
-          color: "white",
-        }}>Reaction Time: {reactionTime} ms</div>
-      )}
-      {showResults && (
         <>
-          <div>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Reaction Time (ms)</th>
-                  <th>Shorter than 100ms</th>
-                  <th>Longer than 500ms</th>
-                </tr>
-              </thead>
-              <tbody>
-                {results.map(result => (
-                  <tr key={result.id}>
-                    <td>{result.id}</td>
-                    <td>{result.ReactionTime}</td>
-                    <td>{result.isShorterThan100ms==1 ? "1" : "0"}</td>
-                    <td>{result.isLongerThan500ms==1 ? "1" : "0"}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        <button onClick={downloadExcel} style={{ marginTop: "10px" }}>Download Excel</button>
+          {isCircle && !showResults && (
+            <div className={styles.circle}>
+            </div>
+          )}
+          {showResults && (
+            <>
+              <div>
+                <table className={styles.table}>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Reaction Time (ms)</th>
+                      <th>Shorter than 100ms</th>
+                      <th>Longer than 500ms</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {results.map(result => (
+                      <tr key={result.id}>
+                        <td>{result.id}</td>
+                        <td>{result.ReactionTime}</td>
+                        <td>{result.isShorterThan100ms==1 ? "1" : "0"}</td>
+                        <td>{result.isLongerThan500ms==1 ? "1" : "0"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <button onClick={downloadExcel} style={{ marginTop: "10px" }}>Download Excel</button>
+            </>
+          )}
         </>
-      )}
     </div>
   )
 }
