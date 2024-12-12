@@ -30,7 +30,7 @@ export default function Home() {
   setTimeout(() => {
     setIsCircle(false);
     setShowResults(true);
-  }, 30000)
+  }, 600000)
 
   useEffect(() => {
     if (!isCircle) {
