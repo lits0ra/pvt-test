@@ -16,9 +16,11 @@ export default function Home() {
   const [reactionTime, setReactionTime] = useState<number | null>(null);
   const [results, setResults] = useState<Result[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const [randomTime, setRandomTime] = useState<number>(Math.floor(Math.random() * 8000) + 2000);
 
   async function displayCircleLogic() {
-    const randomTime = Math.floor(Math.random() * 8000) + 2000;
+    setRandomTime(Math.floor(Math.random() * 8000) + 2000);
+    console.log(randomTime);
     setTimeout(() => {
       setIsCircle(true);
       setStartTime(Date.now());
@@ -28,7 +30,7 @@ export default function Home() {
   setTimeout(() => {
     setIsCircle(false);
     setShowResults(true);
-  }, 600000)
+  }, 30000)
 
   useEffect(() => {
     if (!isCircle) {
