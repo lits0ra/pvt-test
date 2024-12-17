@@ -12,8 +12,8 @@ export default function Home() {
   };
 
   const handleSubmit = () => {
-    if (inputValue.length !== 11) {
-      setError("学籍番号は11文字である必要があります。例: 22DC102029K");
+    if (inputValue.length === 0) {
+      setError("IDを入力してください");
     } else {
       setError("");
       router.push(`/start_test`);
